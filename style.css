@@ -76,3 +76,112 @@ footer {
     background: #202024;
     color: #a8a8b3;
 }
+
+.todo-box {
+    background-color: #161b22;
+    padding: 30px;            
+    border-radius: 10px;      
+    border: 1px solid #30363d; 
+    max-width: 500px;         
+    margin: 20px auto 0 auto;  
+}
+
+.todo-input-container {
+    display: flex;            
+    gap: 10px;              
+    margin-bottom: 20px;      
+}
+
+#task-input {
+    flex: 1;                
+    padding: 12px;             
+    border-radius: 5px;       
+    border: 1px solid #30363d; 
+    background-color: #0d1117; 
+    color: white;             
+    font-size: 1rem;
+}
+
+#task-input:focus {
+    outline: none;            
+    border-color: #ff4d4d;   
+}
+
+#add-btn {
+    background-color: #ff4d4d;
+    color: white;            
+    border: none;            
+    padding: 12px 20px;        
+    border-radius: 5px;      
+    font-weight: bold;        
+    cursor: pointer;          
+}
+
+#add-btn:hover {
+    background-color: #cc0000;
+}
+
+#task-list {
+    list-style: none;       
+    padding: 0;                
+    margin: 0;
+}
+
+#task-list li {
+    display: flex;            
+    justify-content: space-between; 
+    align-items: center;    
+    background-color: #0d1117; 
+    padding: 12px 15px;       
+    margin-bottom: 10px;      
+    border-radius: 5px;      
+    border-left: 4px solid #ff4d4d; 
+}
+
+.delete-btn {
+    background: none;          
+    border: 1px solid #ff4d4d;  
+    color: #ff4d4d;             
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #ff4d4d;
+    color: white;              
+}
+
+#task-list li.checked span {
+    text-decoration: line-through;
+    color: #8b949e;
+}
+
+#task-list li.checked {
+    border-left-color: #8b949e;
+    opacity: 0.6;
+}
+
+.task-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ff4d4d;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 15px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    transition: 0.2s;
+}
+
+.task-check:checked {
+    background-color: #ff4d4d;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='12px' height='12px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}

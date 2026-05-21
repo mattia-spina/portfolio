@@ -14,5 +14,92 @@
         <a href="index.html" style="margin-top: 15px; font-size: 0.9rem; padding: 5px 15px;"> Torna al Portfolio</a>
     </header>
 
+    <section id="todo-section">
+        <div class="todo-box">
+            <div class="todo-input-container">
+                <input type="text" id="task-input" placeholder="Scrivi qualcosa da fare...">
+                <button id="add-btn">Aggiungi</button>
+            </div>
+            <ul id="task-list"></ul>
+        </div>
+    </section>
+
+    <script>
+        taskInput = document.getElementById('task-input');
+        addBtn = document.getElementById('add-btn');
+        taskList = document.getElementById('task-list');
+
+        function addTask() {
+            taskText = taskInput.value.trim();
+
+            if (taskText === "") {
+                alert("Scrivi qualcosa prima di aggiungere!");
+                return;
+            }
+
+            li = document.createElement('li');
+            
+            checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.className = "task-check";
+            li.appendChild(checkbox);
+            
+            spanText = document.createElement('span');
+            spanText.textContent = taskText;
+            li.appendChild(spanText);
+
+            deleteBtn = document.createElement('button');
+            deleteBtn.textContent = "×";
+            deleteBtn.className = "delete-btn";
+            li.appendChild(deleteBtn);
+
+            taskList.appendChild(li);
+            taskInput.value = "";
+            
+            saveData();
+        }
+
+        taskList.addEventListener('click', function(evento) {
+            if (evento.target.className === "task-check") {
+                evento.target.parentElement.classList.toggle('checked');
+                saveData();
+            } 
+            else if (evento.target.tagName === "BUTTON") {
+                evento.target.parentElement.remove();
+                saveData();
+            }
+        });
+
+        taskList.addEventListener('change', function() {
+            saveData();
+        });
+
+        function saveData() {
+            checks = taskList.querySelectorAll('.task-check');
+            for (i = 0; i < checks.length; i++) {
+                if (checks[i].checked) {
+                    checks[i].setAttribute('checked', 'checked');
+                } else {
+                    checks[i].removeAttribute('checked');
+                }
+            }
+            localStorage.setItem("todoData", taskList.innerHTML);
+        }
+
+        function showTask() {
+            taskList.innerHTML = localStorage.getItem("todoData") || "";
+        }
+
+        addBtn.addEventListener('click', addTask);
+
+        taskInput.addEventListener('keypress', function(evento) {
+            if (evento.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        showTask();
+    </script>
+
 </body>
 </html>
